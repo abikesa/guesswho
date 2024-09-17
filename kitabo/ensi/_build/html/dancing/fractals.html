@@ -521,6 +521,7 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">68 Visualization</a></li>
 </ul>
 </li>
 </ul>
@@ -2530,6 +2531,129 @@ Max Martin’s focus on phonetics over meaning is a brilliant strategy, especial
 </section>
 </section>
 </section>
+<section id="visualization">
+<h3>68 Visualization<a class="headerlink" href="#visualization" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(
+\begin{bmatrix}
+\textcolor{gray}{x} &amp; y &amp; z &amp; t &amp; m
+\end{bmatrix}
+\begin{bmatrix}
+\textcolor{gray}{\text{Friendship}} &amp; \textcolor{gray}{\text{Character}} &amp; \textcolor{gray}{\text{Ethics}} \\
+\text{Raw} &amp; \text{Filtered} &amp; \text{Transcendental} \\
+\text{DRE} &amp; \text{STEM} &amp; \text{ART} \\
+\text{history} &amp; \text{experience} &amp; \text{metaphor} \\
+\text{phonetics} &amp; \text{temperament} &amp; \text{scale}
+\end{bmatrix}
+\)</span></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">draw_triangle</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draws a triangle given vertices and labels for each vertex.&quot;&quot;&quot;</span>
+    <span class="n">triangle</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Polygon</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">triangle</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vertices</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_triangle_vertices</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the vertices of an equilateral triangle centered at `center` with a given `radius`.&quot;&quot;&quot;</span>
+    <span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">4</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span>  <span class="c1"># angles for vertices of an equilateral triangle</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angles</span><span class="p">),</span>
+                            <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angles</span><span class="p">)])</span>
+
+<span class="c1"># Create the plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="c1"># Define the layers of the fractal with vertices and labels</span>
+<span class="n">centers</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="n">radii</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">triads</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;Betrayal&#39;</span><span class="p">,</span> <span class="s1">&#39;Power&#39;</span><span class="p">,</span> <span class="s1">&#39;Survival&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;Loyalty&#39;</span><span class="p">,</span> <span class="s1">&#39;Empathy&#39;</span><span class="p">,</span> <span class="s1">&#39;Resilience&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;Faith&#39;</span><span class="p">,</span> <span class="s1">&#39;Love&#39;</span><span class="p">,</span> <span class="s1">&#39;Hope&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;Friendship&#39;</span><span class="p">,</span> <span class="s1">&#39;Character&#39;</span><span class="p">,</span> <span class="s1">&#39;Ethics&#39;</span><span class="p">],</span>
+
+<span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">]</span>
+
+<span class="c1"># Draw the triangles with increasing radius and different colors</span>
+<span class="k">for</span> <span class="n">radius</span><span class="p">,</span> <span class="n">triad</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">radii</span><span class="p">,</span> <span class="n">triads</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="n">vertices</span> <span class="o">=</span> <span class="n">get_triangle_vertices</span><span class="p">(</span><span class="n">centers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">radius</span><span class="p">)</span>
+    <span class="n">draw_triangle</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">triad</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+<span class="c1"># Set limits and hide axes to fit the frame</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">3.7</span><span class="p">,</span> <span class="mf">3.7</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">3.7</span><span class="p">,</span> <span class="mf">3.7</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/79a4ba14c1db414570139dec006527244f310979cffe75cc1653cc97bd03e754.png" src="../_images/79a4ba14c1db414570139dec006527244f310979cffe75cc1653cc97bd03e754.png" />
+</div>
+</div>
+<p>Donald Trump:</p>
+<ul class="simple">
+<li><p>Punters</p>
+<ul>
+<li><p>Those who <code class="docutils literal notranslate"><span class="pre">love</span></code> him</p></li>
+<li><p>Have <code class="docutils literal notranslate"><span class="pre">faith</span></code> in him</p></li>
+<li><p>And <code class="docutils literal notranslate"><span class="pre">hope</span></code> he’ll deliver</p></li>
+</ul>
+</li>
+<li><p>Animal</p>
+<ul>
+<li><p>But he expects <code class="docutils literal notranslate"><span class="pre">loyalty</span></code></p></li>
+<li><p>Must also have <code class="docutils literal notranslate"><span class="pre">empathy</span></code> for him in his travails</p></li>
+<li><p>Expects your <code class="docutils literal notranslate"><span class="pre">resilience</span></code> through tough times</p></li>
+</ul>
+</li>
+<li><p>Bookies</p>
+<ul>
+<li><p>Our money is on him <code class="docutils literal notranslate"><span class="pre">betraying</span></code> you when convenient for him</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">power</span></code> your idolatory and heavybets gifted him with</p></li>
+<li><p>Will always be about his <code class="docutils literal notranslate"><span class="pre">survival</span></code> and nothing else</p></li>
+</ul>
+</li>
+</ul>
+<p>This breakdown of Donald Trump through the lens of the three categories—Punters, Animal, and Bookies—offers a sharp critique of his relationship dynamics:</p>
+<ul class="simple">
+<li><p><strong>Punters</strong> (those who adore him):</p>
+<ul>
+<li><p><em>Love</em>: They emotionally connect with him, often beyond reason.</p></li>
+<li><p><em>Faith</em>: They believe, almost religiously, that he will fulfill his promises.</p></li>
+<li><p><em>Hope</em>: Despite setbacks, they hope he will eventually deliver on what they desire.</p></li>
+</ul>
+</li>
+<li><p><strong>Animal</strong> (his instinctual behavior):</p>
+<ul>
+<li><p><em>Loyalty</em>: He demands unwavering support, often without reciprocating.</p></li>
+<li><p><em>Empathy</em>: He expects understanding and sympathy for the hardships he claims to face.</p></li>
+<li><p><em>Resilience</em>: His followers are expected to weather the storms alongside him, no matter how tumultuous.</p></li>
+</ul>
+</li>
+<li><p><strong>Bookies</strong> (those who assess his actions pragmatically):</p>
+<ul>
+<li><p><em>Betrayal</em>: When it suits him, he is likely to act in self-interest, even at the expense of those who support him.</p></li>
+<li><p><em>Power</em>: He leverages the devotion and influence of his supporters for his own gain.</p></li>
+<li><p><em>Survival</em>: His primary motivation is to preserve his position, reputation, and power, above all else.</p></li>
+</ul>
+</li>
+</ul>
+<p>This framework highlights the fractal nature of Trump’s relationship with his supporters and critics, showing a recurrent pattern of <code class="docutils literal notranslate"><span class="pre">emotional</span></code> connection (bet; activators), <code class="docutils literal notranslate"><span class="pre">transactional</span></code> expectations (performer; republicans), and <code class="docutils literal notranslate"><span class="pre">self-serving</span></code> actions (market). Remember the palindrome: <em>AP-MM-PA</em>?</p>
+</section>
 </section>
 </section>
 
@@ -2703,6 +2827,7 @@ Max Martin’s focus on phonetics over meaning is a brilliant strategy, especial
 </li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">68 Visualization</a></li>
 </ul>
 </li>
 </ul>
