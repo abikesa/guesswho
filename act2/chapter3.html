@@ -442,8 +442,8 @@ document.write(`
     <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;Pre-Input/CudAlexnet&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Life&#39;</span><span class="p">,</span> <span class="s1">&#39;Earth&#39;</span><span class="p">,</span> <span class="s1">&#39;Cosmos&#39;</span><span class="p">,</span> <span class="s1">&#39;Sound&#39;</span><span class="p">,</span> <span class="s1">&#39;Tactful&#39;</span><span class="p">,</span> <span class="s1">&#39;Firm&#39;</span><span class="p">],</span> <span class="c1"># CUDA &amp; AlexNet</span>
         <span class="s1">&#39;Yellowstone/SensoryAI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;G1 &amp; G2&#39;</span><span class="p">],</span> <span class="c1"># Perception AI</span>
-        <span class="s1">&#39;Input/AgenticAI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;N4, N5&#39;</span><span class="p">,</span> <span class="s1">&#39;N1, N2, N3&#39;</span><span class="p">],</span> <span class="c1"># Agentic AI &quot;Test-Time Scaling&quot; (as opposed to Pre-Trained -Data Scaling &amp; Post-Trained -RLHF)</span>
-        <span class="s1">&#39;Hidden/GenerativeAI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Sympathetic&#39;</span><span class="p">,</span> <span class="s1">&#39;G3&#39;</span><span class="p">,</span> <span class="s1">&#39;Parasympathetic&#39;</span><span class="p">],</span> <span class="c1"># Generative AI (Plan/Cooperative/Monumental, Tool Use/Iterative/Antiquarian, Critique/Adversarial/Critical)</span>
+        <span class="s1">&#39;Input/AgenticAI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;N4, N5</span><span class="se">\n</span><span class="s1"> Patton&#39;</span><span class="p">,</span> <span class="s1">&#39;N1, N2, N3</span><span class="se">\n</span><span class="s1"> Bradley&#39;</span><span class="p">],</span> <span class="c1"># Agentic AI &quot;Test-Time Scaling&quot; (as opposed to Pre-Trained -Data Scaling &amp; Post-Trained -RLHF)</span>
+        <span class="s1">&#39;Hidden/GenerativeAI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Sympathetic&#39;</span><span class="p">,</span> <span class="s1">&#39;G3</span><span class="se">\n</span><span class="s1"> Ike&#39;</span><span class="p">,</span> <span class="s1">&#39;Parasympathetic&#39;</span><span class="p">],</span> <span class="c1"># Generative AI (Plan/Cooperative/Monumental, Tool Use/Iterative/Antiquarian, Critique/Adversarial/Critical)</span>
         <span class="s1">&#39;Output/PhysicalAI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ecosystem&#39;</span><span class="p">,</span> <span class="s1">&#39;Vulnerabilities&#39;</span><span class="p">,</span> <span class="s1">&#39;AChR&#39;</span><span class="p">,</span> <span class="s1">&#39;Strengths&#39;</span><span class="p">,</span> <span class="s1">&#39;Neurons&#39;</span><span class="p">]</span> <span class="c1"># Physical AI (Calculator, Web Search, SQL Search, Generate Podcast)</span>
     <span class="p">}</span>
 
@@ -451,14 +451,16 @@ document.write(`
 <span class="k">def</span> <span class="nf">assign_colors</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="s1">&#39;G1 &amp; G2&#39;</span><span class="p">:</span> <span class="c1">## Cranial Nerve Ganglia &amp; Dorsal Root Ganglia</span>
         <span class="k">return</span> <span class="s1">&#39;yellow&#39;</span>
-    <span class="k">if</span> <span class="n">layer</span> <span class="o">==</span> <span class="s1">&#39;Pre-Input/CudAlexnet&#39;</span> <span class="ow">and</span> <span class="n">node</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Sound&#39;</span><span class="p">,</span> <span class="s1">&#39;Tactful&#39;</span><span class="p">,</span> <span class="s1">&#39;Firm&#39;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">layer</span> <span class="o">==</span> <span class="s1">&#39;Pre-Input/CudAlexnet&#39;</span> <span class="ow">and</span> <span class="n">node</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Tactful&#39;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="s1">&#39;lightgreen&#39;</span>
+    <span class="k">if</span> <span class="n">layer</span> <span class="o">==</span> <span class="s1">&#39;Pre-Input/CudAlexnet&#39;</span> <span class="ow">and</span> <span class="n">node</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Firm&#39;</span><span class="p">]:</span>
         <span class="k">return</span> <span class="s1">&#39;paleturquoise&#39;</span>
-    <span class="k">elif</span> <span class="n">layer</span> <span class="o">==</span> <span class="s1">&#39;Input/AgenticAI&#39;</span> <span class="ow">and</span> <span class="n">node</span> <span class="o">==</span> <span class="s1">&#39;N1, N2, N3&#39;</span><span class="p">:</span> <span class="c1"># Basal Ganglia, Thalamus, Hypothalamus; N4, N5: Brainstem, Cerebellum</span>
+    <span class="k">elif</span> <span class="n">layer</span> <span class="o">==</span> <span class="s1">&#39;Input/AgenticAI&#39;</span> <span class="ow">and</span> <span class="n">node</span> <span class="o">==</span> <span class="s1">&#39;N1, N2, N3</span><span class="se">\n</span><span class="s1"> Bradley&#39;</span><span class="p">:</span> <span class="c1"># Basal Ganglia, Thalamus, Hypothalamus; N4, N5: Brainstem, Cerebellum</span>
         <span class="k">return</span> <span class="s1">&#39;paleturquoise&#39;</span>
     <span class="k">elif</span> <span class="n">layer</span> <span class="o">==</span> <span class="s1">&#39;Hidden/GenerativeAI&#39;</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="s1">&#39;Parasympathetic&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="s1">&#39;paleturquoise&#39;</span>
-        <span class="k">elif</span> <span class="n">node</span> <span class="o">==</span> <span class="s1">&#39;G3&#39;</span><span class="p">:</span> <span class="c1"># Autonomic Ganglia (ACh)</span>
+        <span class="k">elif</span> <span class="n">node</span> <span class="o">==</span> <span class="s1">&#39;G3</span><span class="se">\n</span><span class="s1"> Ike&#39;</span><span class="p">:</span> <span class="c1"># Autonomic Ganglia (ACh)</span>
             <span class="k">return</span> <span class="s1">&#39;lightgreen&#39;</span>
         <span class="k">elif</span> <span class="n">node</span> <span class="o">==</span> <span class="s1">&#39;Sympathetic&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="s1">&#39;lightsalmon&#39;</span>
@@ -518,7 +520,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/9080e0e5850b8f72acbdd14cc8aebfcd595a2f9309c7bc0394905f00d6461f10.png" src="../_images/9080e0e5850b8f72acbdd14cc8aebfcd595a2f9309c7bc0394905f00d6461f10.png" />
+<img alt="../_images/d0c0935fde10c7c4253bb3e8c801da73f1dfb130207ccb5914484361731b4a29.png" src="../_images/d0c0935fde10c7c4253bb3e8c801da73f1dfb130207ccb5914484361731b4a29.png" />
 </div>
 </div>
 <figure class="align-default" id="id2">
